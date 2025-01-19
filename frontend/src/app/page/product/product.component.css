@@ -1,0 +1,231 @@
+.product {
+	margin: 20px;
+	display: grid;
+	gap: 15px;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.product > .content {
+	margin: 0px 10px;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+}
+
+.product > .content > .details {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	border-radius: 10px;
+	padding: 10px 10px;
+	background-color: whitesmoke;
+}
+
+.product > .content > .details > .name {
+	font-size: 28px;
+	font-family: YoungSerif;
+}
+
+.product > .content > .details > .average {
+	display: flex;
+	padding: 3px;
+	gap: 4px;
+	font-size: 16px;
+	border-bottom: 2px solid gray;
+	font-family: Karla;
+}
+
+.product > .content > .details > .price {
+	font-size: 16px;
+	font-family: Karla;
+}
+
+.product > .content > .details > .price strong {
+	vertical-align: top;
+	font-size: 24px;
+}
+
+.product > .content > .details > .about {
+	padding: 20px 0px 0px 0px;
+}
+
+.product > .content > .details > .about > .title {
+	font-size: 18px;
+	font-family: YoungSerif;
+}
+
+.product > .content > .details > .about > .description {
+	font-size: 16px;
+	font-family: Karla;
+}
+
+.reviews {
+	margin: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	border-radius: 15px;
+	padding: 10px 10px;
+	background-color: whitesmoke;
+}
+
+.reviews > .review {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	padding: 10px;
+	border-radius: 15px;
+}
+
+
+.reviews > .review.own-review {
+	background-color: #F9F8DC;
+}
+
+.reviews > .review > .details {
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	border-radius: 0px;
+	border-bottom: 2px solid black;
+	gap: 5px;
+}
+
+.reviews > .review > .details > .delete {
+	background-color: #E0433E;
+	transition-duration: 250ms;
+	width: 24px;
+	height: 24px;
+	border: 0px;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.reviews > .review > .details > .delete:hover {
+	cursor: pointer;
+	background-color: black;
+	color: #E0433E;
+}
+
+
+.reviews > .review > .details > .username {
+	font-family: Karla;
+	font-size: 20px;
+}
+
+.reviews > .review > .details > .short {
+	flex: 1;
+	font-size: 16px;
+	font-family: Karla;
+	hyphens: auto;
+	text-align: justify;
+	word-spacing: -0.5px;
+}
+
+.reviews > .review > .details > .rating {
+	text-align: right;
+}
+
+.reviews > .review > .note {
+	font-size: 16px;
+	font-family: Karla;
+	hyphens: auto;
+	text-align: justify;
+	word-spacing: -0.5px;
+	padding: 3px;
+}
+
+.reviews > .review > .date {
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+}
+
+.reviews > .review > .date > .modified {
+	font-size: 14px;
+	font-family: Karla;
+	hyphens: auto;
+	text-align: justify;
+	word-spacing: -0.5px;
+	padding: 3px;
+}
+
+.reviews > .review > .date > .published {
+	flex: 1;
+	font-size: 14px;
+	font-family: Karla;
+	hyphens: auto;
+	text-align: right;
+	word-spacing: -0.5px;
+	padding: 3px;
+}
+
+
+form {
+	margin: 20px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	background-color: whitesmoke;
+	border-radius: 10px;
+}
+
+form > .title {
+	font-size: 24px;
+	font-family: YoungSerif;
+}
+
+form > .autogrid {
+	display: grid;
+	gap: 25px;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+form .input {
+	display: flex;
+	font-family: Karla;
+	flex-direction: column;
+}
+
+form .input label, textarea {
+	font-size: 16px;
+}
+
+form .input input, textarea {
+	font-size: 18px;
+	padding: 6px;
+}
+
+form .input textarea {
+  resize: none;
+  box-sizing: border-box;
+	min-width: 100%;
+}
+
+form .control {
+	padding: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+form .control button {
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 8px;
+	background-color: whitesmoke;
+	border: 2px solid black;
+	font-family: Audiowide;
+}
+
+form .input .validation-error {
+	color: red;
+}
+
+form .control button:hover {
+	transition-duration: 450ms;
+	background-color: black;
+	border: 2px solid whitesmoke;
+	color: white;
+	cursor: pointer;
+}

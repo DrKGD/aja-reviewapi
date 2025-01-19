@@ -1,0 +1,8 @@
+<div class="banner">
+	<p>Find All the products <strong>you</strong> ever wanted</p>
+	<p>On the <strong>ReviewZone</strong>!</p>
+</div>
+
+<div class="categories">
+	<app-card-category *ngFor="let ct of categories" [category]="ct" [routerLink]="[ '/products' ]" [queryParams]="{ selected: ct.id }" />
+</div>

@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="addCategory()" >
+	<div class="title">
+		Add category
+	</div>
+
+	<div class="autogrid">
+		<div class="input">
+			<label for="category">Category name</label>
+			<input formControlName="category" required id="category" placeholder="e.g. School and Office" />
+
+			<div class="validation-error" *ngIf="form.controls['category'].invalid && form.controls['category'].touched">
+				<small *ngIf="form.controls['category'].errors?.['required']">
+					category is required
+				</small>
+			</div>
+		</div>
+	</div>
+
+	<div class="control">
+		<button>Add category</button>
+	</div>
+</form>

@@ -1,0 +1,32 @@
+<div class="card" [routerLink]="['/product', product!.id]">
+	<div class="card-header">
+		<img [src]="(product!.images[0]) || '/assets/img/no_picture.jpg'"/>
+	</div>
+
+	<div class="card-body">
+		<div class="tags"> 
+			<span class="tag" *ngFor="let tag of product!.tags">
+				{{ tag.name }}
+			</span>
+		</div>
+
+		<div class="content">
+			<div class="title">
+				{{ product!.name }} 
+			</div>
+
+			<div class="price">
+				€{{ product!.price }}
+			</div>
+
+			<div class="description">
+				{{ product!.description }}
+			</div>
+
+			<div class="average">
+				<app-rating [readonly]="true" [rating]="product?.average ?? 0"/>
+				<div>{{ product?.average ? product!.average : "Product was not rated yet!" }}</div>
+			</div>
+		</div>
+	</div>
+</div>

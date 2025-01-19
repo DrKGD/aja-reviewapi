@@ -1,0 +1,132 @@
+<div class="product" *ngIf="product">
+	<app-common-carousel [images]=product!.images />
+
+	<div class="content"> 
+		<div class="details">
+			<div class="name">{{ product!.name }}</div>
+			
+			<div class="average">
+				<div>{{ product.average ? product!.average : "Yet to be reviewed" }}</div>
+				<app-rating [readonly]="true" [rating]="product.average ?? 0"/>
+				<div> {{ product.reviews.length }} ratings</div>
+			</div>
+
+			<div class="price">
+				Price: <strong>€{{ product!.price }}</strong>
+			</div>
+
+			<div class="about">
+				<div class="title">About this item</div>
+				<div class="description">
+					{{ product!.description }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="reviews" *ngIf="product">
+	<ng-container *ngFor="let rev of product!.reviews" >
+		<div class="review" [class.own-review]="user!.id === rev!.id_user">
+			<div class="details">
+				<button class="delete" *ngIf="user!.id === rev!.id_user" (click)="removeReview(rev)">
+					<fa-icon [icon]=faXmark />
+				</button>
+
+				<div class="username">
+					{{ rev.username }}
+				</div>
+
+				<div class="short">
+					{{ rev.short_note }}
+				</div>
+
+				<div class="rating">
+					<app-rating [readonly]="true" [rating]="rev.rating"/>
+					<div>{{ rev.rating }}</div>
+				</div>
+			</div>
+
+			<div class="note">
+				{{ rev.note }}
+			</div>
+
+			<div class="date">
+				<ng-container *ngIf="rev.date != rev.last_modified; then modified else default"></ng-container>
+
+				<ng-template #modified>
+					<div class="modified" *ngIf="rev.date != rev.last_modified">
+						*Modified on {{ rev.last_modified | date:"MMM dd, yyyy 'at' hh:mm a" }}
+					</div>
+
+					<div class="published">
+						Originally reviewed on {{ rev.date | date:"MMM dd, yyyy 'at' hh:mm a" }}
+					</div>
+				</ng-template>
+
+				<ng-template #default>
+					<div class="published">
+						Reviewed on {{ rev.date | date:"MMM dd, yyyy 'at' hh:mm a" }}
+					</div>
+				</ng-template>
+			</div>
+		</div>
+	</ng-container>
+</div>
+
+<form *ngIf="user?.role !== 'guest'" [formGroup]="form" (ngSubmit)="addReview()" >
+	<div class="title">
+		Review this product
+	</div>
+
+	<div class="autogrid">
+		<div class="input">
+			<label for="short_note">Summary (Max. 128 characters)</label>
+			<input formControlName="short_note" id="short_note" placeholder="Insert a brief summary of the review"/>
+
+			<div class="validation-error" *ngIf="form.controls['short_note'].invalid && form.controls['short_note'].touched">
+				<small *ngIf="form.controls['short_note'].errors?.['required']">
+					A brief text is required.
+				</small>
+
+				<small *ngIf="form.controls['short_note'].errors?.['maxlength']">
+					Text is too long! (max 128 characters)
+				</small>
+			</div>
+		</div>
+
+		<div class="input">
+			<label for="rating">Rating</label>
+			<input step="0.5" min="0" max="5" type="number" formControlName="rating" id="rating" placeholder="Rate this product in a scale from 0 to 5"/>
+
+			<div class="validation-error" *ngIf="form.controls['rating'].invalid && form.controls['rating'].touched">
+				<small *ngIf="form.controls['rating'].errors?.['required']">
+					A numeric value between 0 and 5 is required.
+				</small>
+
+				<small *ngIf="form.controls['rating'].errors?.['min'] || form.controls['rating'].errors?.['max']">
+						Value must be between 0 and 5.
+				</small>
+			</div>
+		</div>
+	</div>
+
+	<div class="input">
+		<label for="note">Detailed review</label>
+		<textarea formControlName="note" id="note" placeholder="Detailed review" rows="10"></textarea>
+
+		<div class="validation-error" *ngIf="form.controls['note'].invalid && form.controls['note'].touched">
+			<small *ngIf="form.controls['note'].errors?.['required']">
+				A text is required.
+			</small>
+
+			<small *ngIf="form.controls['note'].errors?.['maxlength']">
+				Text is too long! (max 2048 characters)
+			</small>
+		</div>
+	</div>
+
+	<div class="control">
+		<button type="submit">Submit Review</button>
+	</div>
+</form>

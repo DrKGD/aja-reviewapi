@@ -1,0 +1,25 @@
+<div class="carousel">
+	<div class="selected">
+		<img [src]="images[selected]">
+	</div>
+
+	<div class="list">
+		<div class="scrollable-list" #scroll>
+			<div class="item" *ngFor="let img of images; let ix = index" [style.flex-basis]="getFlexBasis()">
+				<img [src]="images[ix]" [class.selected]="selected == ix" (click)="select(ix)" />
+			</div>
+		</div>
+
+		<div class="overlay left" [class.hidden]="hideControl()" (click)="scrollLeft(scroll)">
+			<div class="control">
+				<fa-icon [icon]="faCaretLeft" />
+			</div>
+		</div>
+
+		<div class="overlay right" [class.hidden]="hideControl()" (click)="scrollRight(scroll)">
+			<div class="control">
+				<fa-icon [icon]="faCaretRight" />
+			</div>
+		</div>
+	</div>
+</div>

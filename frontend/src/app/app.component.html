@@ -1,0 +1,12 @@
+<div class="container">
+	<app-common-header *ngIf="hasHeaderFooter"/>
+
+	<div class="content">
+		<router-outlet />
+	</div>
+
+	<app-common-footer *ngIf="hasHeaderFooter" />
+</div>
+
+<app-common-toast />
+<app-common-confirm />

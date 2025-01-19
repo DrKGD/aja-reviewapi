@@ -1,0 +1,6 @@
+
+<div id="container" [class.readOnly]="readonly">
+  <fa-icon *ngFor="let item of [].constructor(maxRating); let i = index" 
+		[icon]="faIcon" [class.rated]="(rating ?? 0) > i" (click)="setRating(i)"
+	/>
+</div>

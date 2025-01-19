@@ -1,0 +1,32 @@
+@font-face {
+	font-family: "Krop";
+	src: url('/assets/font/Krop/Krop-Regular.ttf') format('truetype');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Kubeon";
+	src: url('/assets/font/Kubeon/Kubeon-Mono Bold.otf') format('opentype');
+	font-style: bold;
+}
+
+@font-face {
+	font-family: 'YoungSerif';
+	src: url('/assets/font/YoungSerif/YoungSerif-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Audiowide';
+	src: url('/assets/font/Audiowide/Audiowide-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Karla';
+	src: url('/assets/font/Karla/Karla-VariableFont_wght.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,0 +1,92 @@
+.carousel {
+	display:	flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: whitesmoke;
+}
+
+.carousel .selected {
+	background-color: white;
+}
+
+.carousel .selected img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.carousel .list {
+	background-color: red;
+	position: relative;
+}
+
+.carousel .list .scrollable-list {
+	flex: 0;
+	background-color: white;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	overflow: hidden;
+}
+
+.carousel .list .scrollable-list .item {
+	background-color: whitesmoke;
+	height: 100%;
+	flex: 0 0;
+	overflow: hidden;
+}
+
+.carousel .list .scrollable-list .item:hover img:not(.selected) {
+	opacity: 1;
+	transform: scale(1.25);
+  transform-origin: center;
+	cursor: pointer;
+}
+
+.carousel .list .scrollable-list .item img.selected {
+	opacity: 1;
+}
+
+.carousel .list .scrollable-list .item img {
+	opacity: 0.5;
+	transition-duration: 350ms;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.carousel .list .overlay {
+	position: absolute;
+	align-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel .list .overlay.left {
+	left: 0;
+}
+
+.carousel .list .overlay.right {
+	right: 0;
+}
+
+.carousel .list .overlay .control {
+	font-size: 28px;
+	line-height: 0px;
+	padding: 2px 6px;
+	text-align: center;
+	opacity: 0.15;
+	transition-duration: 350ms;
+}
+
+.carousel .list .overlay.hidden {
+	visibility: hidden;
+}
+
+.carousel .list .overlay .control:hover {
+	transform: scale(1.25);
+  transform-origin: center;
+	opacity: 1;
+	cursor: pointer;
+}

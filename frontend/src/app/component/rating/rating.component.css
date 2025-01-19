@@ -1,0 +1,7 @@
+fa-icon {
+	color: gray;
+}
+
+fa-icon.rated {
+	color: orange;
+}

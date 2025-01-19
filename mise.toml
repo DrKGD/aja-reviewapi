@@ -1,0 +1,36 @@
+[vars]
+webapp		=	"{{ cwd }}/docker/tomcat-webapps"
+backend		=	"{{ cwd }}/backend"
+libs			=	"{{ cwd }}/libs"
+
+[tasks.sync]
+description = "Clone webapp from ReviewAPI"
+sources			= [ "{{vars.backend}}/ReviewAPI/src/main/webapp/**/*" ]
+run					= "rsync -r {{vars.backend}}/ReviewAPI/src/main/webapp/* {{vars.webapp}}/ReviewAPI"
+
+[tasks.build-backend]
+description = "Build webapp from ReviewAPI"
+sources			= [ "{{vars.backend}}/ReviewAPI/src/**/*.java", "{{vars.backend}}/shared/src/**/*.java" ]
+run					= """
+	#!/usr/bin/env bash
+	shopt -s globstar
+
+	javac --release 21 \
+		-d "{{vars.webapp}}/ReviewAPI/WEB-INF/classes" \
+		-cp "{{ vars.libs }}/*" \
+		{{vars.backend}}/shared/src/**/*.java \
+		{{vars.backend}}/ReviewAPI/src/main/java/**/*.java
+	touch "{{vars.webapp}}/ReviewAPI/WEB-INF/web.xml"
+"""
+
+[tasks.build-frontend]
+description = "Build webapp from ReviewAPI"
+dir					= "{{ cwd }}/frontend"
+run					= """
+	ng build --configuration production
+	rsync -r "./dist/frontend/browser/" "../docker/dist/"
+"""
+
+[tasks.watch]
+description = "Install watcher for ReviewAPI"
+run					= "mise watch --debounce 300ms 'sync' ::: 'build'"

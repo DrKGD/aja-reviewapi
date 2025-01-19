@@ -1,0 +1,70 @@
+.banner {
+	margin: 10px 20px;
+	background-color: whitesmoke;
+	border-radius: 8px;
+	padding: 20px;
+	font-size: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-items: flex-start;
+	align-items: center;
+}
+
+.banner p {
+	padding: 0px;
+	margin: 0px;
+	flex: 0;
+	font-family: Karla;
+}
+
+.banner p strong {
+	font-size: 28px;
+	vertical-align: baseline;
+	font-family: YoungSerif;
+}
+
+.actions {
+	display: grid;
+	grid-gap: 15px 20px;
+	justify-content: flex-start;
+	margin: 20px 5px;
+	padding: 0px 30px;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.actions .action {
+	padding: 12px;
+	background-color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 12px;
+	position: relative;
+	text-decoration: none;
+	color: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.actions .action .title {
+	flex: 1;
+	font-size: 18px;
+	font-family: AudioWide;
+}
+
+
+.actions .action .icon {
+	flex: 0;
+	width: 100%;
+}
+
+.actions .action:hover {
+	transition-duration: 300ms;
+	transform: scale(1.1);
+  transform-origin: center;
+	z-index: 200;
+}
+
+.actions .action img {
+	width: 64px;
+	object-fit: contain;
+}

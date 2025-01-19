@@ -1,0 +1,6 @@
+# Webapplets folder
+tomcat-webapps/**
+
+# Only allow htaccess
+dist/*
+!dist/.htaccess

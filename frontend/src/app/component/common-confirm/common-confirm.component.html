@@ -1,0 +1,16 @@
+<div *ngIf="(isVisible$ | async)" class="confirm" [@fadeInOut] >
+	<div class="text">
+		<p *ngFor="let ln of (prompt$ | async)">
+			{{ ln }}
+		</p>
+	</div>
+	
+	<div class="control">
+		<button class="abort" (click)="emit(false)">
+			<fa-icon [icon]="faXmark"/>
+		</button>
+		<button class="confirm" (click)="emit(true)">
+			<fa-icon [icon]="faCheck"/>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+footer {
+	background-color: whitesmoke;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+footer .sections {
+	display: flex;
+	flex-direction: row;
+	padding: 0px 20px;
+}
+
+footer .sections .section {
+	display: flex;
+	flex: 1 0 33%;
+	flex-direction: column;
+	margin: 0px;
+	gap: 10px;
+}
+
+footer .sections .section .title {
+	font-size: 24px;
+	font-family: YoungSerif;
+}
+
+footer .sections .section .links {
+	display: grid;
+	gap: 15px;
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+footer .sections .section .links a {
+	color: black;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	font-size: 22px;
+}
+
+footer .sections .section .links a span {
+	font-size: 16px;
+	font-family: Karla;
+}
+
+footer .disclaimer {
+	padding: 20px 20px;
+	font-size: 16px;
+	font-family: Karla;
+	display: flex;
+	gap: 15px;
+}
+
+footer .disclaimer p {
+	margin: 0px;
+	text-align: center;
+}

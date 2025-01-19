@@ -1,0 +1,5 @@
+<div class="filter">
+	<span *ngFor="let elem of elements | keyvalue" [class.selected]="elem.value.selected" (click)="onTagClick(+elem.key)">
+		{{ elem.value.name }}
+	</span>
+</div>

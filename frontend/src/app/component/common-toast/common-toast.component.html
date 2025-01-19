@@ -1,0 +1,5 @@
+<div *ngIf="(isVisible$ | async)" class="toast" [ngClass]="(kind$ | async) | lowercase" [@fadeInOut]>
+	<p *ngFor="let ln of (message$ | async)">
+		{{ ln }}
+	</p>
+</div>

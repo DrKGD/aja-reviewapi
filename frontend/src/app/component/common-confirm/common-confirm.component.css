@@ -1,0 +1,55 @@
+div.confirm {
+  position: fixed;
+  top:	50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 15px;
+	max-width: 40%;
+	min-width: 25%;
+
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+	font-size: 18px;
+	font-family: Karla;
+	hyphens: auto;
+	text-align: justify;
+	word-spacing: -0.5px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.confirm > .text {
+	padding: 10px;
+}
+
+.confirm > .text > p {
+	margin: 0px;
+}
+
+.confirm > .control {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;	
+	gap: 5px;
+}
+
+.confirm > .control > button {
+	width: 30px;
+	height: 30px;
+	border: 0px;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.confirm > .control > button.abort {
+	background-color: #E0433E;
+}
+
+.confirm > .control > button.confirm {
+	background-color: #BDD358;
+}

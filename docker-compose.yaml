@@ -1,0 +1,75 @@
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  # mysql
+  mysql:
+    image: mysql:9.1.0
+    container_name: aja-mysql
+    ports:
+      - ${PORT_MYSQL?No port configured for DB}:3306
+    volumes:
+      - ${PWD}/docker/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+
+    environment:
+      MYSQL_ROOT_PASSWORD:  ${DB_PASS?No root password configuired for database}
+      MYSQL_DATABASE:       ${DB_HOST?No endpoint configured for database}
+
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+
+  # manage mysql from interface
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: aja-phpmyadmin
+    ports:
+      - ${PORT_PHPMYADMIN}:80
+    environment:
+      - PMA_USER=root
+      - PMA_PASSWORD=${DB_PASS?Missing password for the database}
+      - PMA_HOST=${DB_HOST?Missing host of the database}
+      - PMA_PORT=${PORT_MYSQL?Missing port of the databas}
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+  # backend deployed via tomcat
+  tomcat:
+    image: tomcat:11.0.2
+    container_name: aja-tomcat
+    # N.B.: Don't export port to DMZ the backend
+    ports:
+      - ${PORT_TOMCAT}:8080
+    volumes:
+      - ${PWD}/docker/tomcat-webapps:/usr/local/tomcat/webapps:rw
+      - ${PWD}/libs:/usr/local/tomcat/lib
+    depends_on:
+      mysql:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - backend
+      - frontend
+
+  # frontend deployed via httpd (apache)
+  httpd:
+    image: httpd:latest
+    container_name: aja-apache
+    ports:
+      - ${PORT_HTTPD}:80
+    volumes:
+      - ${PWD}/docker/dist:/usr/local/apache2/htdocs
+      - ${PWD}/docker/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    networks:
+      - frontend

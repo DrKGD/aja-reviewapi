@@ -1,0 +1,36 @@
+<header>
+	<a class="logo" href="/">
+		<div class="icon">
+			<img src="/assets/icon/feedback.png">
+		</div>
+
+		<div class="site-name">
+			ReviewZone
+		</div>
+	</a>
+
+	<nav>
+		<div class="links">
+			<a href="/editor" *ngIf="user && user.role == 'editor'">Editor</a>
+			<a href="/products">View all Products</a>
+		</div>
+		
+		<div class="auth">
+			<a href="/register" *ngIf="user?.role === 'guest'">
+				<img src="/assets/icon/register.png"/>
+			</a>
+			<a href="/login" *ngIf="user?.role === 'guest'">
+				<img src="/assets/icon/login.png"/>
+			</a>
+
+			<div class="logged" *ngIf="user?.role !== 'guest'" >
+				<button (click)="logout()">
+					<img src="/assets/icon/logout.png"/>
+				</button>
+
+				<div class="username"> {{ user?.username }} </div>
+			</div>
+
+		</div>
+	</nav>
+</header>

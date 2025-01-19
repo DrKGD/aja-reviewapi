@@ -1,0 +1,104 @@
+header {
+	display: flex;
+	align-items: center;
+	background-color: whitesmoke;
+	padding: 8px;
+	border-radius: 8px;
+	justify-content: space-between;
+}
+
+header .logo { 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 4px;
+	text-decoration: none;
+}
+
+header .logo .icon {
+	height: 32px;
+	padding: 2px;
+}
+
+header .logo .icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+header .logo .site-name {
+	padding: 4px;
+	font-size: 18px;
+	font-family: YoungSerif;
+	color: black;
+}
+
+header nav {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+header nav .links {
+	display: flex;
+	gap: 20px;
+}
+
+header nav .links a {
+	padding: 0px 20px;
+	font-size: 18px;
+	text-decoration: none;
+	color: black;
+	font-family: Audiowide;
+	position: relative;
+}
+
+header nav .links a:hover {
+	transition-duration: 250ms;
+	transform: scale(1.25);
+  transform-origin: center;
+	z-index: 100;
+}
+
+header nav .auth {
+	display: flex;
+	gap: 20px;
+	padding: 0px 20px;
+}
+
+header nav .auth a {
+	width: 28px;
+	position: relative;
+}
+
+header nav .auth button {
+	width: 38px;
+	position: relative;
+	border: 0px;
+	background: none;
+}
+
+header nav .auth .logged {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+header nav .auth .logged .username {
+	font-size: 16px;	
+	font-family: Karla;
+}
+
+header nav .auth a:hover, button:hover {
+	transition-duration: 250ms;
+	transform: scale(1.15);
+  transform-origin: center;
+	z-index: 100;
+	cursor: pointer;
+}
+
+header nav .auth a img, button img {
+	width:	100%;
+	height: 100%;
+	object-fit: contain;
+}

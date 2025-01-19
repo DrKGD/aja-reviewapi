@@ -1,0 +1,21 @@
+<form #f="ngForm" (ngSubmit)="attemptLogin(f)" >
+	<div class="title">
+		Log in
+	</div>
+
+	<div class="autogrid">
+		<div class="input">
+			<label for="username">Username</label>
+			<input name="username" ngModel required id="username" placeholder="Username" />
+		</div>
+
+		<div class="input">
+			<label for="password">Password</label>
+			<input type="password" name="password" ngModel required id="password" placeholder="Password" />
+		</div>
+	</div>
+	
+	<div class="control">
+		<button>Log in</button>
+	</div>
+</form>

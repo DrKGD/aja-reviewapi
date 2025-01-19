@@ -1,0 +1,20 @@
+<div class="tags">
+	<div class="title">
+		Update filter by toggling one or more categories from the list.
+	</div>
+
+	<div class="container">
+		<app-filter-whitelist [elements]="filteredCategories" (selected)="onFilterSelected($event)" />
+	</div>
+</div>
+
+<div class="list">
+  <ng-container *ngFor="let p of taggedProductsWithAVG">
+		<app-card-product *ngIf="isWhitelisted(p)" [product]="p" />
+	</ng-container>
+</div>
+
+<div class="fallback" *ngIf="!hasProducts">
+	<h1>No products available for the given filter.</h1>
+	<p>Please update the filters!</p>
+</div>
